@@ -56,4 +56,28 @@
 
 <script>
     function calcular() {
-        // 1. Pega o valor digitado no input (Correção: removido o espaço no nome da variável
+        // 1. Pega o valor digitado no input (Correção: removido o espaço no nome da variável)
+        const rendaTotal = Number(document.getElementById('valor').value);
+
+        // Validação simples caso o usuário não digite nada
+        if (!rendaTotal || rendaTotal <= 0) {
+            document.getElementById('resultado').innerHTML = "<p style='color: red;'>Por favor, insira um valor válido.</p>";
+            return;
+        }
+
+        // 2. Calcula as divisões (50% Necessidades, 30% Desejos, 20% Poupança)
+        const necessidades = rendaTotal * 0.50;
+        const desejos = rendaTotal * 0.30;
+        const poupanca = rendaTotal * 0.20;
+
+        // 3. Exibe o resultado dentro da div 'resultado'
+        document.getElementById('resultado').innerHTML = `
+            <p>🟢 Necessidades (50%): R$ ${necessidades.toFixed(2).replace('.', ',')}</p>
+            <p>🟡 Desejos (30%): R$ ${desejos.toFixed(2).replace('.', ',')}</p>
+            <p>🔵 Poupança/Investimentos (20%): R$ ${poupanca.toFixed(2).replace('.', ',')}</p>
+        `;
+    }
+</script>
+
+</body>
+</html>
